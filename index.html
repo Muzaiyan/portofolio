@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portofolio | Muhammad Muzaiyan</title>
+  <meta name="description" content="Portofolio IT Engineer, IT Infrastruktur, dan Network Engineer. Pengalaman fiber optik, jaringan LAN, dan konfigurasi perangkat jaringan.">
+  <meta name="theme-color" content="#F5F6FC">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Portofolio | Muhammad Muzaiyan">
+  <meta property="og:description" content="IT Engineer, IT Infrastruktur, dan Network Engineer.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Pasang tema dan warna aksen sebelum halaman digambar, supaya tidak berkedip -->
+  <script>
+    (function () {
+      var d = document.documentElement, t = null, a = null;
+      d.classList.add("js");
+      try { t = localStorage.getItem("theme"); a = localStorage.getItem("accent"); } catch (e) {}
+      if (t !== "dark" && t !== "light") t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      d.setAttribute("data-theme", t);
+      if (a) d.setAttribute("data-accent", a);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+  <a class="skip" href="#konten">Lewati ke konten</a>
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="bar" id="atas">
+    <div class="wrap">
+      <div class="bar-in">
+        <a class="brand" href="#beranda" aria-label="Kembali ke atas">
+          <span class="brand-mark" id="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name" id="brand-name"></span>
+        </a>
+        <nav id="nav" aria-label="Navigasi utama"><ul id="nav-list"></ul></nav>
+        <div class="bar-tools">
+          <button class="icon-btn kbd-btn" id="cmd-btn" type="button" aria-label="Buka palet perintah (Ctrl atau Cmd + K)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+            <span>Cari</span><kbd id="kbd-hint">Ctrl K</kbd>
+          </button>
+          <div class="accent-wrap">
+            <button class="icon-btn" id="accent-btn" type="button" aria-label="Pilih warna aksen" aria-expanded="false" aria-controls="accent-pop"><span class="accent-dot"></span></button>
+            <div class="accent-pop" id="accent-pop" hidden>
+              <p class="sub">Warna aksen</p>
+              <div class="swatches" id="swatches"></div>
+            </div>
+          </div>
+          <button class="icon-btn theme-btn" id="theme-btn" type="button" aria-label="Ganti tema terang atau gelap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g>
+              <path class="moon" d="M20 14.2A8 8 0 0 1 9.8 4a8 8 0 1 0 10.2 10.2z"/>
+            </svg>
+          </button>
+          <a class="btn primary sm bar-cv" id="cv-bar" target="_blank" rel="noopener">Unduh CV</a>
+          <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="nav">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="konten">
+    <!-- Hero -->
+    <section class="hero wrap" id="beranda" aria-labelledby="name">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="status"><span class="dot" aria-hidden="true"></span><span id="status"></span></p>
+          <h1 id="name"></h1>
+          <p class="roles"><span class="sr" id="roles-sr"></span><span aria-hidden="true">&gt; <b id="typed"></b><span class="caret"></span></span></p>
+          <p class="lead" id="intro"></p>
+          <div class="cta">
+            <a class="btn primary" href="#proyek">Lihat proyek
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn" id="cv-hero" target="_blank" rel="noopener">Unduh CV</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <figure class="portrait"><div class="frame" id="portrait"></div></figure>
+          <div class="term card" id="term" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="topo card rv">
+        <p class="topo-cap">Jalur yang sering saya kerjakan, dari ISP sampai perangkat pengguna. Pilih salah satu perangkat untuk melihat peran saya.</p>
+        <div class="topo-scroll" id="topo-svg"></div>
+        <div class="topo-info" id="topo-info" aria-live="polite">
+          <p class="topo-title" id="topo-title"></p>
+          <p class="topo-note" id="topo-note"></p>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+    </section>
+
+    <!-- Tentang -->
+    <section class="sec" id="tentang" aria-labelledby="h-tentang">
+      <div class="wrap">
+        <div class="sec-head rv"><p class="eyebrow">Tentang</p><h2 id="h-tentang">Mengenal <em class="grad">saya</em></h2></div>
+        <div class="bento rv">
+          <div class="about card" id="about"></div>
+          <dl class="facts" id="facts"></dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Keahlian -->
+    <section class="sec alt" id="keahlian" aria-labelledby="h-keahlian">
+      <div class="wrap">
+        <div class="sec-head rv"><p class="eyebrow">Keahlian</p><h2 id="h-keahlian">Yang bisa saya <em class="grad">kerjakan</em></h2></div>
+        <div class="skills" id="tech"></div>
+        <div class="soft">
+          <p class="sub rv">Soft skills</p>
+          <div class="soft-grid" id="soft"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyek -->
+    <section class="sec" id="proyek" aria-labelledby="h-proyek">
+      <div class="wrap">
+        <div class="sec-head rv"><p class="eyebrow">Proyek</p><h2 id="h-proyek">Pekerjaan <em class="grad">pilihan</em></h2></div>
+        <div class="filters rv" id="filters" role="group" aria-label="Saring proyek berdasarkan topik"></div>
+        <div class="proj-grid" id="projects"></div>
+      </div>
+    </section>
+
+    <!-- Pengalaman -->
+    <section class="sec alt" id="pengalaman" aria-labelledby="h-pengalaman">
+      <div class="wrap">
+        <div class="sec-head rv"><p class="eyebrow">Pengalaman</p><h2 id="h-pengalaman">Perjalanan <em class="grad">kerja</em></h2></div>
+        <div class="timeline" id="experience"></div>
+      </div>
+    </section>
+
+    <!-- Sertifikasi -->
+    <section class="sec" id="sertifikasi" aria-labelledby="h-sertifikasi">
+      <div class="wrap">
+        <div class="sec-head rv"><p class="eyebrow">Sertifikasi</p><h2 id="h-sertifikasi">Sertifikasi dan <em class="grad">pelatihan</em></h2></div>
+        <div class="certs" id="certs"></div>
+      </div>
+    </section>
+
+    <!-- Pendidikan -->
+    <section class="sec alt" id="pendidikan" aria-labelledby="h-pendidikan">
+      <div class="wrap">
+        <div class="sec-head rv"><p class="eyebrow">Pendidikan</p><h2 id="h-pendidikan">Latar <em class="grad">akademik</em></h2></div>
+        <div id="education"></div>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <section class="sec" id="kontak" aria-labelledby="h-kontak">
+      <div class="wrap">
+        <div class="sec-head rv"><p class="eyebrow">Kontak</p><h2 id="h-kontak">Mari <em class="grad">terhubung</em></h2></div>
+        <div class="contact-grid">
+          <div class="contact-main card rv">
+            <p class="contact-lead" id="contact-lead"></p>
+            <div class="contact-cta"><a class="btn primary" id="cv-contact" target="_blank" rel="noopener">Unduh CV</a></div>
+            <div id="contacts"></div>
+          </div>
+
+          <form class="compose card rv" id="compose" novalidate>
+            <p class="sub">Atau tulis pesan singkat</p>
+            <div class="field">
+              <label for="f-name">Nama Anda</label>
+              <input id="f-name" name="nama" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-msg">Pesan</label>
+              <textarea id="f-msg" name="pesan" required></textarea>
+            </div>
+            <div><button class="btn primary" type="submit">Buka di aplikasi email</button></div>
+            <p class="compose-note" id="compose-note">Tombol ini membuka aplikasi email Anda dengan pesan yang sudah terisi.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="fiber" aria-hidden="true">
+        <i style="--c:var(--fiber-blue)" title="Biru"></i><i style="--c:var(--fiber-orange)" title="Jingga"></i><i style="--c:var(--fiber-green)" title="Hijau"></i><i style="--c:var(--fiber-brown)" title="Cokelat"></i><i style="--c:var(--fiber-slate)" title="Abu-abu"></i><i style="--c:var(--fiber-white)" title="Putih"></i><i style="--c:var(--fiber-red)" title="Merah"></i><i style="--c:var(--fiber-black)" title="Hitam"></i><i style="--c:var(--fiber-yellow)" title="Kuning"></i><i style="--c:var(--fiber-violet)" title="Ungu"></i><i style="--c:var(--fiber-rose)" title="Merah muda"></i><i style="--c:var(--fiber-aqua)" title="Aqua"></i>
+      </div>
+      <div class="foot-row">
+        <p class="foot-cap">Urutan warna serat optik menurut TIA-598: biru, jingga, hijau, cokelat, abu-abu, putih, merah, hitam, kuning, ungu, merah muda, aqua.</p>
+        <ul class="foot-links" id="foot-links"></ul>
+      </div>
+      <p class="copy" id="copy"></p>
+    </div>
+  </footer>
+
+  <button class="icon-btn to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6"/></svg>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Palet perintah (Ctrl atau Cmd + K) -->
+  <dialog class="cmd" id="cmd" aria-label="Palet perintah">
+    <div class="cmd-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      <input id="cmd-input" type="text" placeholder="Cari section atau perintah..." autocomplete="off" spellcheck="false" aria-label="Cari perintah">
+      <kbd>Esc</kbd>
+    </div>
+    <div class="cmd-list" id="cmd-list" role="listbox"></div>
+    <div class="cmd-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> pilih</span><span><kbd>Enter</kbd> jalankan</span></div>
+  </dialog>
+
+  <!-- Jendela detail proyek dan pratinjau sertifikat -->
+  <dialog class="dlg" id="dlg" aria-labelledby="dlg-title">
+    <form method="dialog" class="dlg-close">
+      <button class="icon-btn" aria-label="Tutup jendela">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </form>
+    <div class="dlg-in">
+      <div class="dlg-media" id="dlg-media"></div>
+      <div class="dlg-body" id="dlg-body"></div>
+    </div>
+  </dialog>
+
+  <noscript>
+    <p style="padding:2rem;font-family:sans-serif">Halaman ini membutuhkan JavaScript untuk menampilkan isi portofolio.</p>
+  </noscript>
+
+  <script src="js/data.js"></script>
+  <script src="js/art.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

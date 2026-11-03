@@ -1,0 +1,154 @@
+/* ==========================================================
+   DASAR: reset, tipografi, tombol, kartu, elemen kecil
+   ========================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  -webkit-text-size-adjust: 100%;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.0625rem/1.7 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  counter-reset: sec;
+}
+body.lock { overflow: hidden; }
+
+img, svg { max-width: 100%; }
+img { display: block; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+[hidden] { display: none !important; }
+button { font: inherit; color: inherit; }
+
+::selection { background: color-mix(in srgb, var(--a1) 30%, transparent); }
+:focus-visible { outline: 2px solid var(--a1); outline-offset: 3px; border-radius: 6px; }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.skip {
+  position: absolute; left: 1rem; top: -4rem; z-index: 100;
+  padding: .6rem 1rem; border-radius: 999px;
+  background: var(--ink); color: var(--bg); text-decoration: none;
+  transition: top .2s;
+}
+.skip:focus { top: 1rem; }
+
+/* ---------- Tipografi ---------- */
+h1 {
+  font: 400 clamp(3rem, 7vw, 5.6rem)/.98 var(--f-display);
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+h2 {
+  font: 400 clamp(2.3rem, 4.6vw, 3.5rem)/1.04 var(--f-display);
+  letter-spacing: -.015em;
+  text-wrap: balance;
+}
+h3 { font: 600 1.15rem/1.3 var(--f-body); letter-spacing: -.005em; }
+em.grad, .grad {
+  font-style: italic;
+  background: var(--grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  padding-right: .06em;
+}
+.sub { font: 600 .78rem/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.org { color: var(--muted); margin-top: .15rem; }
+.period { color: var(--muted); font: 500 .85rem/1.4 var(--f-mono); }
+
+/* ---------- Tombol ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .85rem 1.5rem;
+  border: 1px solid var(--line-strong); border-radius: 999px;
+  font: 600 .95rem/1.2 var(--f-body);
+  color: var(--ink); background: transparent; text-decoration: none; cursor: pointer;
+  transition: transform .25s var(--ease), background .25s, border-color .25s, box-shadow .25s;
+}
+.btn:hover { background: var(--glass); border-color: var(--a1); transform: translateY(-2px); }
+.btn.primary {
+  border-color: transparent; background: var(--grad); color: var(--on-grad);
+  box-shadow: 0 10px 26px -10px color-mix(in srgb, var(--a1) 70%, transparent);
+}
+.btn.primary:hover { box-shadow: 0 16px 34px -10px color-mix(in srgb, var(--a1) 85%, transparent); }
+.btn.sm { padding: .55rem 1.05rem; font-size: .85rem; }
+.btn svg { width: 1.05em; height: 1.05em; flex: none; }
+
+.mini {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .4rem .85rem;
+  border: 1px solid var(--line-strong); border-radius: 999px;
+  font: 600 .8rem/1.2 var(--f-body);
+  background: transparent; text-decoration: none; cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+.mini:hover { border-color: var(--a1); background: color-mix(in srgb, var(--a1) 10%, transparent); }
+
+.icon-btn {
+  display: grid; place-items: center;
+  width: 2.5rem; height: 2.5rem; padding: 0;
+  border: 1px solid var(--line); border-radius: 50%;
+  background: var(--glass); color: var(--ink); cursor: pointer;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: border-color .2s, transform .25s var(--ease);
+}
+.icon-btn:hover { border-color: var(--a1); transform: translateY(-1px); }
+.icon-btn svg { width: 18px; height: 18px; }
+
+.lnk {
+  display: inline-block; margin-top: .75rem; font-weight: 600;
+  text-decoration-color: var(--a1); text-decoration-thickness: 2px; text-underline-offset: .25em;
+}
+
+.chip {
+  display: inline-block; padding: .3rem .8rem;
+  border: 1px solid var(--line); border-radius: 999px;
+  font: 500 .82rem/1.4 var(--f-body); background: var(--glass); color: var(--ink);
+}
+
+/* ---------- Kartu kaca dengan cahaya mengikuti kursor ---------- */
+.card {
+  position: relative; isolation: isolate; overflow: hidden;
+  background: var(--glass);
+  border: 1px solid var(--line); border-radius: var(--r);
+  box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  transition: transform .4s var(--ease), border-color .3s;
+}
+.card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .35s;
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--a1) 18%, transparent), transparent 65%);
+}
+.card:hover { border-color: color-mix(in srgb, var(--a1) 40%, var(--line)); }
+.card:hover::before { opacity: 1; }
+
+/* Daftar dengan penanda titik gradasi */
+.bul { display: grid; gap: .75rem; }
+.bul li { position: relative; padding-left: 1.5rem; max-width: 64ch; }
+.bul li::before {
+  content: ""; position: absolute; left: 0; top: .72em;
+  width: .5rem; height: .5rem; border-radius: 50%; background: var(--grad);
+}
+
+/* ---------- Muncul saat di-scroll ---------- */
+.js .rv { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+.js .rv.in { opacity: 1; transform: none; }
+
+/* ---------- Transisi tema melingkar ---------- */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .js .rv { opacity: 1; transform: none; }
+}

@@ -1,0 +1,80 @@
+/* ==========================================================
+   TOKEN DESAIN
+   Warna, font, dan ukuran. Ubah di sini, seluruh halaman ikut berubah.
+   Tema diatur lewat atribut data-theme (light | dark) pada <html>.
+   Warna aksen diatur lewat data-accent (aurora | emerald | sunset | azure).
+   ========================================================== */
+:root {
+  /* Font */
+  --f-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --f-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* Ukuran */
+  --maxw: 1180px;
+  --r: 20px;
+  --r-sm: 12px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+
+  /* Kode warna serat optik TIA-598 */
+  --fiber-blue: #0072BC;  --fiber-orange: #F7931E; --fiber-green: #2E9E4F; --fiber-brown: #7B4A2A;
+  --fiber-slate: #7F8C99; --fiber-white: #F5F5F5;  --fiber-red: #D92B2B;   --fiber-black: #1A1A1A;
+  --fiber-yellow: #F2C500; --fiber-violet: #7A3E9D; --fiber-rose: #F28CB1; --fiber-aqua: #20B7C9;
+
+  /* Aksen bawaan: aurora */
+  --a1: #5B4BFF; --a2: #0E7C9A;
+}
+
+/* ---------- Tema terang ---------- */
+:root, :root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #F5F6FC;          /* latar halaman */
+  --bg-2: #ECEEF8;        /* latar section selang-seling */
+  --surface: #FFFFFF;     /* permukaan solid (ilustrasi, input) */
+  --glass: rgba(255, 255, 255, .72);
+  --ink: #0E1224;
+  --muted: #565D7C;
+  --line: rgba(14, 18, 36, .10);
+  --line-strong: rgba(14, 18, 36, .22);
+  --soft: #E7E9F6;
+  --ok: #15803D;
+  --on-grad: #FFFFFF;     /* teks di atas gradasi aksen */
+  --shadow: 0 1px 2px rgba(14, 18, 36, .05), 0 18px 40px -18px rgba(50, 50, 140, .28);
+  --glow: .35;            /* kekuatan cahaya latar */
+}
+
+/* ---------- Tema gelap ---------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #07091A;
+  --bg-2: #0B0E22;
+  --surface: #11152E;
+  --glass: rgba(22, 27, 56, .55);
+  --ink: #EEF0FC;
+  --muted: #9CA3C8;
+  --line: rgba(255, 255, 255, .09);
+  --line-strong: rgba(255, 255, 255, .22);
+  --soft: #171C3C;
+  --ok: #34D399;
+  --on-grad: #080A1C;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 24px 48px -20px rgba(0, 0, 0, .7);
+  --glow: .55;
+}
+
+/* ---------- Warna aksen: terang ---------- */
+:root[data-accent="aurora"]  { --a1: #5B4BFF; --a2: #0E7C9A; }
+:root[data-accent="emerald"] { --a1: #047857; --a2: #0E7490; }
+:root[data-accent="sunset"]  { --a1: #D6246E; --a2: #B45309; }
+:root[data-accent="azure"]   { --a1: #2563EB; --a2: #0369A1; }
+
+/* ---------- Warna aksen: gelap ---------- */
+:root[data-theme="dark"][data-accent="aurora"],
+:root[data-theme="dark"]:not([data-accent])  { --a1: #8B7CFF; --a2: #2DD4E8; }
+:root[data-theme="dark"][data-accent="emerald"] { --a1: #34D399; --a2: #22D3EE; }
+:root[data-theme="dark"][data-accent="sunset"]  { --a1: #FF6FA5; --a2: #FFB547; }
+:root[data-theme="dark"][data-accent="azure"]   { --a1: #60A5FA; --a2: #38E0F5; }
+
+:root {
+  --accent: var(--a1);
+  --grad: linear-gradient(120deg, var(--a1), var(--a2));
+}
